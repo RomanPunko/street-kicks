@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/ui/button";
 import React, { useRef, useState, type FC } from "react";
 import { LiaMoneyCheckAltSolid } from "react-icons/lia";
 
@@ -38,7 +39,7 @@ const Home: FC = () => {
           <div className="money-check-animation">
             <LiaMoneyCheckAltSolid size={200} />
           </div>
-          <button
+          <Button
             onClick={() => inputRef.current?.click()}
             onDrop={handleDrop}
             onDragOver={handleDragOver}
@@ -49,7 +50,7 @@ const Home: FC = () => {
               <p>+</p>
               <p className="text-[16px]">add a check</p>
             </div>
-          </button>
+          </Button>
         </div>
       )}
       <input
@@ -68,12 +69,11 @@ const Home: FC = () => {
               className="max-w-xs rounded shadow"
             />
           </div>
-          <button
-            type="button"
+          <Button
             className=" bg-black rounded-xl border-1 border-white/30 px-4 py-2 cursor-pointer"
           >
             Сalculate
-          </button>
+          </Button>
         </div>
       )}
     </div>
