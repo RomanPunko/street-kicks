@@ -24,3 +24,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.money-check-animation {
+  animation: money-check 3s linear infinite;
+}
+
+@keyframes money-check {
+  from {
+    transform: translateX(0px);
+  }
+
+  to {
+    transform: translateX(200px);
+  }
+}
