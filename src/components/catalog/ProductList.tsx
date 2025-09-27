@@ -10,7 +10,13 @@ const ProductList: FC = () => {
   const { products, loading, error } = useAppSelector(
     (state) => state.products
   );
-  const search = useAppSelector((state) => state.filtres.search);
+  const search = useAppSelector((state) => state.filters.search);
+  const selectedTypeFilters = useAppSelector(
+    (state) => state.filters.typeFilters
+  );
+  const selectedGenderFilters = useAppSelector(
+    (state) => state.filters.genderFilters
+  );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -18,11 +24,28 @@ const ProductList: FC = () => {
   }, [dispatch]);
 
   const filteredProducts = useMemo(() => {
-    if (search.length < 3) return products;
-    return products.filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase())
-    );
-  }, [products, search]);
+    let result = products;
+
+    if (search.length >= 3) {
+      result = result.filter((item) =>
+        item.name.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+
+    if (selectedGenderFilters.length > 0) {
+      result = result.filter((item) => {
+        return item.gender.some((g) => selectedGenderFilters.includes(g));
+      });
+    }
+
+    if (selectedTypeFilters.length > 0) {
+      result = result.filter((item) => {
+        return selectedTypeFilters.includes(item.type.toLowerCase());
+      });
+    }
+
+    return result;
+  }, [products, search, selectedTypeFilters, selectedGenderFilters]);
 
   if (loading)
     return (

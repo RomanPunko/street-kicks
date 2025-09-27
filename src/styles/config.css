@@ -17,6 +17,7 @@ body {
   color: var(--text);
   font-family: var(--font-primary), sans-serif;
   border: var(--border);
+  overflow-y: scroll;
 }
 
 /* === Minimal Reset CSS === */

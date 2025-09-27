@@ -7,6 +7,8 @@ const products = [
     image:
       "https://sneakers.com.ua/image/cache/catalog/image/catalog/image/catalog/image/nike/air-force/mid/fksu0027/25502.webp",
     price: 300,
+    gender: ["чоловікам", "жінкам"],
+    type: "Кросівки",
   },
   {
     id: "2",
@@ -14,6 +16,8 @@ const products = [
     image:
       "https://sneakers.com.ua/image/cache/catalog/image/cache/catalog/image/catalog/image/newbalance/9060/fks56975/24321-623x627.webp",
     price: 400,
+    gender: ["чоловікам", "жінкам"],
+    type: "Кросівки",
   },
   {
     id: "3",
@@ -21,6 +25,8 @@ const products = [
     image:
       "https://sneakers.com.ua/image/cache/catalog/image/cache/catalog/image/catalog/image/newbalance/530/fks55919/25508-623x627.webp",
     price: 250,
+    gender: ["чоловікам", "жінкам"],
+    type: "Кросівки",
   },
   {
     id: "4",
@@ -28,6 +34,8 @@ const products = [
     image:
       "https://sneakers.com.ua/image/cache/catalog/image/cache/catalog/image/catalog/image/catalog/vans/knuskool/zb-2357170/46239-623x627.webp",
     price: 290,
+    gender: ["чоловікам", "жінкам"],
+    type: "Кеди",
   },
   {
     id: "5",
@@ -35,6 +43,8 @@ const products = [
     image:
       "https://sneakers.com.ua/image/cache/catalog/image/cache/catalog/image/catalog/image/catalog/adidas/handball/zb-2358876/61191-623x627.webp",
     price: 330,
+    gender: ["жінкам",],
+    type: "Кеди",
   },
   {
     id: "6",
@@ -42,6 +52,8 @@ const products = [
     image:
       "https://sneakers.com.ua/image/cache/catalog/image/cache/catalog/image/catalog/image/catalog/ugg/classicmini/classic/zb-2355203/38018-623x627.webp",
     price: 500,
+    gender: ["жінкам",],
+    type: "Черевики",
   },
   {
     id: "7",
@@ -49,6 +61,8 @@ const products = [
     image:
       "https://sneakers.com.ua/image/cache/catalog/image/cache/catalog/image/catalog/image/crocs/zb-2353226/26002-623x627.webp",
     price: 20,
+    gender: ["дітям",],
+    type: "Шльопанці",
   },
   {
     id: "8",
@@ -56,6 +70,8 @@ const products = [
     image:
       "https://sneakers.com.ua/image/cache/catalog/image/cache/catalog/image/catalog/image/crocs/zb-2353221/25968-623x627.webp",
     price: 25,
+    gender: ["дітям",],
+    type: "Шльопанці",
   },
   {
     id: "9",
@@ -63,6 +79,8 @@ const products = [
     image:
       "https://sneakers.com.ua/image/cache/catalog/image/cache/catalog/image/catalog/image/catalog/puma/zb-2354376/34358-623x627.webp",
     price: 40,
+    gender: ["чоловікам", "жінкам"],
+    type: "Шльопанці",
   },
   {
     id: "10",
@@ -70,6 +88,8 @@ const products = [
     image:
       "https://sneakers.com.ua/image/cache/catalog/image/cache/catalog/image/catalog/image/catalog/product///dr-martens/1460/zd-3715/309911-623x627.webp",
     price: 450,
+    gender: ["чоловікам", "жінкам"],
+    type: "Черевики",
   },
 ];
 

@@ -1,13 +1,15 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-interface FiltersState {
+interface IFiltersState {
   search: string;
-  category?: string;
+  typeFilters: string[];
+  genderFilters: string[];
 }
 
-const initialState: FiltersState = {
+const initialState: IFiltersState = {
   search: "",
-  category: undefined,
+  typeFilters: [],
+  genderFilters: [],
 };
 
 const filtersSlice = createSlice({
@@ -17,15 +19,30 @@ const filtersSlice = createSlice({
     setSearch(state, action: PayloadAction<string>) {
       state.search = action.payload;
     },
-    setCategory(state, action: PayloadAction<string | undefined>) {
-      state.category = action.payload;
+    setTypeFilters(state, action: PayloadAction<string>) {
+      if (state.typeFilters.includes(action.payload)) {
+        state.typeFilters = state.typeFilters.filter(
+          (filter) => filter !== action.payload
+        );
+      } else {
+        state.typeFilters.push(action.payload);
+      }
+    },
+    setGenderFilters(state, action: PayloadAction<string>) {
+      if (state.genderFilters.includes(action.payload)) {
+        state.genderFilters = state.genderFilters.filter(
+          (filter) => filter !== action.payload
+        );
+      } else {
+        state.genderFilters.push(action.payload);
+      }
     },
     resetFilters(state) {
-      state.search = "";
-      state.category = undefined;
+      state.genderFilters = [];
+      state.typeFilters = [];
     },
   },
 });
 
-export const { setSearch, setCategory, resetFilters } = filtersSlice.actions;
+export const { setSearch, setTypeFilters, setGenderFilters, resetFilters } = filtersSlice.actions;
 export default filtersSlice.reducer;

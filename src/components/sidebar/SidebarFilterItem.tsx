@@ -1,15 +1,34 @@
 import React, { FC } from "react";
 import { Input } from "../ui/input";
+import { setGenderFilters, setTypeFilters } from "@/store/slices/filter-slice";
+import { useAppDispatch } from "@/hooks/app-hooks";
 
 interface ISidebarFilterItemProps {
   category: string;
   categoryItems: string[];
+  typeFilters: string[];
+  genderFilters: string[];
 }
 
 const SidebarFilterItem: FC<ISidebarFilterItemProps> = ({
   category,
   categoryItems,
+  typeFilters,
+  genderFilters,
 }) => {
+  const dispatch = useAppDispatch();
+
+  const onToggle = (item: string) => {
+    category == "Тип"
+      ? dispatch(setTypeFilters(item))
+      : dispatch(setGenderFilters(item));
+  };
+
+  const isChecked = (item: string) => {
+    if (category === "Тип") return typeFilters.includes(item.toLowerCase());
+    return genderFilters.includes(item.toLowerCase());
+  };
+
   return (
     <div className="inline-flex flex-col mb-2 select-none">
       <div className="mb-1">
@@ -20,6 +39,8 @@ const SidebarFilterItem: FC<ISidebarFilterItemProps> = ({
           <Input
             type="checkbox"
             className="w-4 h-4 accent-black cursor-pointer"
+            checked={isChecked(item)}
+            onChange={() => onToggle(item.toLocaleLowerCase())}
           />
           {item}
         </label>

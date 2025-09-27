@@ -4,7 +4,7 @@ import filtersSliceReducer from './slices/filter-slice';
 
 const rootReducer = combineReducers({
   products: productsDataReducer,
-  filtres: filtersSliceReducer,
+  filters: filtersSliceReducer,
 });
 
 export const setupStore = () => {

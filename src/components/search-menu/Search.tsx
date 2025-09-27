@@ -8,7 +8,7 @@ import { setSearch } from "@/store/slices/filter-slice";
 
 const Search: FC = () => {
   const dispatch = useAppDispatch();
-  const search = useAppSelector((state) => state.filtres.search)
+  const search = useAppSelector((state) => state.filters.search)
 
   return (
     <div className="max-w-[350px] w-full rounded-4xl bg-black/10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
