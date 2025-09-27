@@ -1,14 +1,17 @@
 import React, { FC } from "react";
+import Link from 'next/link';
 
 interface IProductCardProps{
+  id: string;
   name: string;
   image: string;
   price: number;
 }
 
-const ProductCard: FC<IProductCardProps> = ({name, image, price}) => {
+const ProductCard: FC<IProductCardProps> = ({name, image, price, id}) => {
+
   return (
-    <div className="cursor-pointer">
+    <Link href={`/products/${id}`} className="cursor-pointer">
       <img
         src={image}
         alt=""
@@ -17,7 +20,7 @@ const ProductCard: FC<IProductCardProps> = ({name, image, price}) => {
         <p className="text-xl font-bold text-secondary">{name}</p>
         <p className="text-xl">{price}$</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

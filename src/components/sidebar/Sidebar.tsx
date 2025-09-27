@@ -1,3 +1,5 @@
+"use client"
+
 import React, { FC } from "react";
 import SidebarFilterItem from "./SidebarFilterItem";
 import { Button } from "../ui/button";

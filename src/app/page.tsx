@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useRef, useState, type FC } from "react";
+import React, { type FC } from "react";
 import Sidebar from "@/components/sidebar/Sidebar";
 import ProductList from "@/components/catalog/ProductList";
 
