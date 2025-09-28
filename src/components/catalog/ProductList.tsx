@@ -72,7 +72,7 @@ const ProductList: FC = () => {
     );
 
   return (
-    <div className="w-full pl-4 pr-4 grid grid-cols-4 justify-between gap-4">
+    <div className="w-full grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-between gap-4 lg:pl-4 lg:pr-4">
       {filteredProducts.map((item) => (
         <ProductCard id={item.id} name={item.name} image={item.image} price={item.price} key={item.id} />
       ))}

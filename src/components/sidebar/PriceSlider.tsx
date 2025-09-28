@@ -35,7 +35,7 @@ const PriceSlider = () => {
           [&_[data-slot=slider-range]]:bg-black
           [&_[data-slot=slider-thumb]]:bg-black
           [&_[data-slot=slider-thumb]]:h-3
-          [&_[data-slot=slider-thumb]]:w-3 
+          [&_[data-slot=slider-thumb]]:w-3
           [&_[data-slot=slider-thumb]]:rounded-full
           [&_[data-slot=slider-thumb]]:transition-transform
           [&_[data-slot=slider-thumb]:hover]:scale-110

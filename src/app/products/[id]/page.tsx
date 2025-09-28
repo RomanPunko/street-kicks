@@ -36,29 +36,29 @@ const ProductPage: FC = () => {
     );
 
   return (
-    <div className="flex pl-2 pr-2 items-center justify-center gap-20 relative">
+    <div className="lg:flex pl-2 pr-2 lg:items-center lg:justify-center lg:gap-20 relative">
       <div className="absolute top-5 left-5 cursor-pointer bg-black/5 hover:bg-black/15 rounded-4xl">
         <Link href='/'>
           <IoIosArrowRoundBack size={40} />
         </Link>
       </div>
-      <div className="max-w-[40%]">
+      <div className="w-full lg:max-w-[40%]">
         <img src={product?.image} alt={product?.name} />
       </div>
       <div>
         <div className="mb-4">
           <h2 className="text-3xl">{product?.name}</h2>
         </div>
-        <div className="max-w-[500px] mb-4">
+        <div className="w-full mb-2 lg:mb-4 xl:max-w-[550px]">
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi ratione eveniet
             accusamus facilis veniam doloribus repellat ea, inventore quidem error consequatur rem.
             Iure debitis similique minima voluptates explicabo id obcaecati.
           </p>
         </div>
-        <div className="flex items-center gap-4">
-          <div className="text-2xl">{product?.price}$</div>
-          <div className="pb-0.5 bg-black text-white font-bold rounded-xl">
+        <div className="w-full flex flex-col lg:flex-row lg:gap-4 lg:justify-start mb-4">
+          <div className="text-2xl mb-2 lg:mb-0">{product?.price}$</div>
+          <div className="flex items-center justify-center pb-0.5 bg-black text-white font-bold rounded-xl w-full lg:w-auto">
             <Button>Купити</Button>
           </div>
         </div>
