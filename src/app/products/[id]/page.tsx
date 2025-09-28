@@ -38,12 +38,12 @@ const ProductPage: FC = () => {
   return (
     <div className="lg:flex pl-2 pr-2 lg:items-center lg:justify-center lg:gap-20 relative">
       <div className="absolute top-5 left-5 cursor-pointer bg-black/5 hover:bg-black/15 rounded-4xl">
-        <Link href='/'>
+        <Link href="/">
           <IoIosArrowRoundBack size={40} />
         </Link>
       </div>
       <div className="w-full lg:max-w-[40%]">
-        <img src={product?.image} alt={product?.name} />
+        <img src={product?.image} alt={product?.name} loading="lazy" />
       </div>
       <div>
         <div className="mb-4">
