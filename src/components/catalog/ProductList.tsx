@@ -1,35 +1,30 @@
-"use client";
+'use client';
 
-import React, { FC, useEffect, useMemo } from "react";
-import ProductCard from "./ProductCard";
-import { useAppDispatch, useAppSelector } from "@/hooks/app-hooks";
-import { getProducts } from "@/store/slices/products-data-slice";
-import { LoadingSpinner } from "../ui/spinner";
+import React, { FC, useEffect, useMemo } from 'react';
+import ProductCard from './ProductCard';
+import { useAppDispatch, useAppSelector } from '@/hooks/app-hooks';
+import { getProducts } from '@/store/slices/products-data-slice';
+import { LoadingSpinner } from '../ui/spinner';
 
 const ProductList: FC = () => {
-  const { products, loading, error } = useAppSelector(
-    (state) => state.products
-  );
-  const search = useAppSelector((state) => state.filters.search);
-  const selectedTypeFilters = useAppSelector(
-    (state) => state.filters.typeFilters
-  );
-  const selectedGenderFilters = useAppSelector(
-    (state) => state.filters.genderFilters
-  );
+  const { products, loading, error } = useAppSelector((state) => state.products);
+  const search = useAppSelector((state) => state.search.search);
+  const selectedTypeFilters = useAppSelector((state) => state.filters.typeFilters);
+  const selectedGenderFilters = useAppSelector((state) => state.filters.genderFilters);
+  const priceRange = useAppSelector((state) => state.filters.priceRange);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
 
+  // FILTERS
+
   const filteredProducts = useMemo(() => {
     let result = products;
 
     if (search.length >= 3) {
-      result = result.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase())
-      );
+      result = result.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()));
     }
 
     if (selectedGenderFilters.length > 0) {
@@ -44,8 +39,16 @@ const ProductList: FC = () => {
       });
     }
 
+    if (priceRange) {
+      result = result.filter((item) => {
+        if (item.price >= priceRange[0] && item.price <= priceRange[1]) {
+          return result;
+        }
+      });
+    }
+
     return result;
-  }, [products, search, selectedTypeFilters, selectedGenderFilters]);
+  }, [products, search, selectedTypeFilters, selectedGenderFilters, priceRange]);
 
   if (loading)
     return (
@@ -71,13 +74,7 @@ const ProductList: FC = () => {
   return (
     <div className="w-full pl-4 pr-4 grid grid-cols-4 justify-between gap-4">
       {filteredProducts.map((item) => (
-        <ProductCard
-          id={item.id}
-          name={item.name}
-          image={item.image}
-          price={item.price}
-          key={item.id}
-        />
+        <ProductCard id={item.id} name={item.name} image={item.image} price={item.price} key={item.id} />
       ))}
     </div>
   );

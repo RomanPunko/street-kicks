@@ -1,7 +1,7 @@
-import React, { FC } from "react";
-import { Input } from "../ui/input";
-import { setGenderFilters, setTypeFilters } from "@/store/slices/filter-slice";
-import { useAppDispatch } from "@/hooks/app-hooks";
+import React, { FC } from 'react';
+import { Input } from '../ui/input';
+import { setGenderFilters, setTypeFilters } from '@/store/slices/filter-slice';
+import { useAppDispatch } from '@/hooks/app-hooks';
 
 interface ISidebarFilterItemProps {
   category: string;
@@ -19,18 +19,16 @@ const SidebarFilterItem: FC<ISidebarFilterItemProps> = ({
   const dispatch = useAppDispatch();
 
   const onToggle = (item: string) => {
-    category == "Тип"
-      ? dispatch(setTypeFilters(item))
-      : dispatch(setGenderFilters(item));
+    category == 'Тип' ? dispatch(setTypeFilters(item)) : dispatch(setGenderFilters(item));
   };
 
   const isChecked = (item: string) => {
-    if (category === "Тип") return typeFilters.includes(item.toLowerCase());
+    if (category === 'Тип') return typeFilters.includes(item.toLowerCase());
     return genderFilters.includes(item.toLowerCase());
   };
 
   return (
-    <div className="inline-flex flex-col mb-2 select-none">
+    <div className="inline-flex flex-col mb-3 select-none">
       <div className="mb-1">
         <p className="text-xl">{category}</p>
       </div>

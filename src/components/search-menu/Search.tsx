@@ -4,14 +4,14 @@ import React, { FC, useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { CiSearch } from "react-icons/ci";
 import { useAppDispatch, useAppSelector } from "@/hooks/app-hooks";
-import { setSearch } from "@/store/slices/filter-slice";
+import { setSearch } from "@/store/slices/search-slice";
 
 const Search: FC = () => {
   const dispatch = useAppDispatch();
-  const search = useAppSelector((state) => state.filters.search)
+  const search = useAppSelector((state) => state.search.search)
 
   return (
-    <div className="max-w-[350px] w-full rounded-4xl bg-black/10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div className="max-w-[350px] w-full rounded-4xl bg-black/10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 select-none">
       <div className="absolute top-1.5 left-1">
         <CiSearch size={24} />
       </div>

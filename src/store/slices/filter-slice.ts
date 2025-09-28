@@ -1,48 +1,46 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 interface IFiltersState {
-  search: string;
   typeFilters: string[];
   genderFilters: string[];
+  priceRange: [number, number];
 }
 
 const initialState: IFiltersState = {
-  search: "",
   typeFilters: [],
   genderFilters: [],
+  priceRange: [0, Infinity],
 };
 
 const filtersSlice = createSlice({
-  name: "filters",
+  name: 'filters',
   initialState,
   reducers: {
-    setSearch(state, action: PayloadAction<string>) {
-      state.search = action.payload;
-    },
     setTypeFilters(state, action: PayloadAction<string>) {
       if (state.typeFilters.includes(action.payload)) {
-        state.typeFilters = state.typeFilters.filter(
-          (filter) => filter !== action.payload
-        );
+        state.typeFilters = state.typeFilters.filter((filter) => filter !== action.payload);
       } else {
         state.typeFilters.push(action.payload);
       }
     },
     setGenderFilters(state, action: PayloadAction<string>) {
       if (state.genderFilters.includes(action.payload)) {
-        state.genderFilters = state.genderFilters.filter(
-          (filter) => filter !== action.payload
-        );
+        state.genderFilters = state.genderFilters.filter((filter) => filter !== action.payload);
       } else {
         state.genderFilters.push(action.payload);
       }
     },
+    setPriceRange(state, action: PayloadAction<[number, number]>) {
+      state.priceRange = action.payload;
+    },
     resetFilters(state) {
       state.genderFilters = [];
       state.typeFilters = [];
+      state.priceRange = [0, Infinity];
     },
   },
 });
 
-export const { setSearch, setTypeFilters, setGenderFilters, resetFilters } = filtersSlice.actions;
+export const { setTypeFilters, setGenderFilters, resetFilters, setPriceRange } =
+  filtersSlice.actions;
 export default filtersSlice.reducer;

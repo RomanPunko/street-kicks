@@ -15,6 +15,7 @@ const ProductCard: FC<IProductCardProps> = ({name, image, price, id}) => {
       <img
         src={image}
         alt=""
+        className="select-none"
       />
       <div className="pl-2">
         <p className="text-xl font-bold text-secondary">{name}</p>
