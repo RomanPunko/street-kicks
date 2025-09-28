@@ -6,6 +6,8 @@ import React, { FC, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { getProducts } from '@/store/slices/products-data-slice';
 import { LoadingSpinner } from '@/components/ui/spinner';
+import { IoIosArrowRoundBack } from 'react-icons/io';
+import Link from 'next/link';
 
 const ProductPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -34,7 +36,12 @@ const ProductPage: FC = () => {
     );
 
   return (
-    <div className="flex pl-2 pr-2 items-center justify-center gap-20">
+    <div className="flex pl-2 pr-2 items-center justify-center gap-20 relative">
+      <div className="absolute top-5 left-5 cursor-pointer bg-black/5 hover:bg-black/15 rounded-4xl">
+        <Link href='/'>
+          <IoIosArrowRoundBack size={40} />
+        </Link>
+      </div>
       <div className="max-w-[40%]">
         <img src={product?.image} alt={product?.name} />
       </div>
