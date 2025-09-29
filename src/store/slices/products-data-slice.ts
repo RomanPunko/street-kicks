@@ -1,28 +1,23 @@
-import {
-  createSlice,
-  type PayloadAction,
-  createAsyncThunk,
-} from "@reduxjs/toolkit";
-import { ProductsService } from "@/services/products-service";
-import { IProducts } from "@/types/data-types";
+import { createSlice, type PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { ProductsService } from '@/services/products-service';
+import { IProducts } from '@/types/data-types';
+import { getErrorMessage } from '@/utils/get-error-message';
 
-export const getProducts = createAsyncThunk<
-  IProducts,
-  void,
-  { rejectValue: string }
->("products/getAll", async (_, thunkAPI) => {
-  try {
-    const response = await ProductsService();
-    return response.data;
-  } catch (err: any) {
-    const message =
-      err?.response?.data?.message ?? err?.message ?? "Unknown error";
-    return thunkAPI.rejectWithValue(message);
+export const getProducts = createAsyncThunk<IProducts, void, { rejectValue: string }>(
+  'products/getAll',
+  async (_, thunkAPI) => {
+    try {
+      const response = await ProductsService();
+      return response.data;
+    } catch (err: unknown) {
+      const message = getErrorMessage(err);
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
 interface IProductsState {
-  products: IProducts | [];
+  products: IProducts;
   loading: boolean;
   error: string | null;
 }
@@ -34,7 +29,7 @@ const initialState: IProductsState = {
 };
 
 const productsSlice = createSlice({
-  name: "products",
+  name: 'products',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -43,16 +38,13 @@ const productsSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(
-        getProducts.fulfilled,
-        (state, action: PayloadAction<IProducts>) => {
-          state.loading = false;
-          state.products = action.payload;
-        }
-      )
+      .addCase(getProducts.fulfilled, (state, action: PayloadAction<IProducts>) => {
+        state.loading = false;
+        state.products = action.payload;
+      })
       .addCase(getProducts.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload || "Error";
+        state.error = action.payload || 'Error';
       });
   },
 });
