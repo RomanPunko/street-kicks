@@ -19,7 +19,11 @@ const SidebarFilterItem: FC<ISidebarFilterItemProps> = ({
   const dispatch = useAppDispatch();
 
   const onToggle = (item: string) => {
-    category == 'Тип' ? dispatch(setTypeFilters(item)) : dispatch(setGenderFilters(item));
+    if (category === 'Тип') {
+      dispatch(setTypeFilters(item));
+    } else {
+      dispatch(setGenderFilters(item));
+    }
   };
 
   const isChecked = (item: string) => {

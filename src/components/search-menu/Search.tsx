@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import { Input } from "../ui/input";
 import { CiSearch } from "react-icons/ci";
 import { useAppDispatch, useAppSelector } from "@/hooks/app-hooks";
