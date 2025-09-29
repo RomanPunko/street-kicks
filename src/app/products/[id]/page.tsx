@@ -8,6 +8,7 @@ import { getProducts } from '@/store/slices/products-data-slice';
 import { LoadingSpinner } from '@/components/ui/spinner';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ProductPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -43,7 +44,12 @@ const ProductPage: FC = () => {
         </Link>
       </div>
       <div className="w-full lg:max-w-[40%]">
-        <img src={product?.image} alt={product?.name} loading="lazy" />
+        <Image
+          src={product?.image || '/placeholder.png'}
+          alt={product?.name || ''}
+          width={600}
+          height={600}
+        />
       </div>
       <div>
         <div className="mb-4">
